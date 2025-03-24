@@ -3,7 +3,7 @@ import os
 import pymongo
 load_dotenv()  # Asegúrate de que esté antes de usar las variables
 
-USER = os.getenv("USER")
+USER = os.getenv("USERDB")
 PASSWORD = os.getenv("PASSWORD")
 CLUSTER = os.getenv("CLUSTER")
 DB = os.getenv("DB")
