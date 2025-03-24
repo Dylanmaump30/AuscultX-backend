@@ -13,7 +13,6 @@ import os
 import gzip
 from src.services.audios.audio_service import downloadFile
 from src.audioprocess.Mainprocess import process_audio
-from botocore.exceptions import ClientError
 
 audio = Blueprint("audio", __name__)
 
