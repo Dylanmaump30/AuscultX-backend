@@ -7,7 +7,6 @@ from matplotlib import pyplot as plt
 from scipy.io import wavfile 
 
 CUT_FREQ = [250, 2500] 
-AUDIOS_MONO_DIR = 'audios_mono'
 
 def process_audio(audio_path):
     if not os.path.exists(audio_path):
@@ -35,7 +34,6 @@ def process_audio(audio_path):
     n_peaks = len(peaks)
     duracion_seg = time[-1] - time[0]
     rpm = (n_peaks / duracion_seg) * 60
-    print(rpm, n_peaks)
   
     """plt.figure(figsize=(12, 8))
     plt.subplot(3, 1, 1)

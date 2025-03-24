@@ -90,6 +90,5 @@ def get_user_audios(user_id):
 
     if audios:
         return Response(json_util.dumps(audios), mimetype="application/json")
-    print("El usuario no tiene digitado ningún audio")
     return dberrors.not_found()
         
