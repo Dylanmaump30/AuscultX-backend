@@ -1,7 +1,7 @@
 import os
 import numpy as np
-from audioprocess import Butterworth as butter
-from audioprocess import Hilbert as hilbert
+from src.audioprocess import Butterworth as butter
+from src.audioprocess import Hilbert as hilbert
 from scipy.signal import find_peaks
 from matplotlib import pyplot as plt
 from scipy.io import wavfile 
