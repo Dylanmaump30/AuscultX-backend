@@ -16,18 +16,27 @@ def register():
         data = request.get_json()
         user_schema = schemas.get_user_schema()
         validate(instance=data, schema=user_schema)
+
         data["password"] = generate_password_hash(data["password"])
         cleaned_data = user_service.clean_data(data)
-        if not user_service.existing_user(cleaned_data):
-            return user_service.create_user(cleaned_data)
-        else:       
+
+        if user_service.existing_user(cleaned_data):
             return dberrors.already_exists()
+
+        user_service.create_user(cleaned_data)
+        return jsonify({
+            "success": True,
+            "message": "User registered successfully."
+        }), 200
+
     except ValidationError as e:
         current_app.logger.error(str(e))
         return jsonify({"message": e.schema.get("description", "Validation failed")}), 400
+
     except Exception as e:
         current_app.logger.error(f"Unexpected error: {str(e)}")
         return dberrors.data_not_match()
+
 
 @user.route('/login', methods=['POST'])
 def login():
