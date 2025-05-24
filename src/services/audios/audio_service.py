@@ -14,7 +14,7 @@ def uploadFile(filename):
 def downloadFile(filename, user_id):
     try:
         s3_key = f'public/{user_id}/{filename}'
-        local_dir = f'C:/Proyectos/AuscultX/AuscultX-backend/src/files/audios/{user_id}'
+        local_dir = os.path.join(SRC_FOLDER, user_id)
         local_path = os.path.join(local_dir, filename)
         create_directory(local_dir)
         s3_client = boto3.client('s3')
